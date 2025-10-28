@@ -3,7 +3,8 @@ const { Resend } = require('resend');
 const cors = require('cors');
 
 const app = express();
-const resend = new Resend('re_BgoohFMA_JTP8Wf8gLFyrfgUuWwLCPe4n');
+// MUDANÇA: A chave da API foi removida por segurança. Cole a sua chave aqui.
+const resend = new Resend('SUA_CHAVE_API_RESEND'); 
 
 app.use(cors());
 app.use(express.json());
@@ -24,16 +25,18 @@ app.post('/api/enviar-orcamento', async (req, res) => {
 
     const agora = new Date();
     const data = agora.toLocaleDateString('pt-BR');
-    const horario = agora.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
+    // MUDANÇA: Variável 'horario' foi removida, pois não será mais usada.
 
     // Email para a empresa
     await resend.emails.send({
-      from: 'orcamento@defender.eng.br',
+      // MUDANÇA: Nome do remetente alterado.
+      from: 'Orçamentos Defender Engenharia <orcamento@defender.eng.br>',
       to: ['marketingdefenderengenharia@gmail.com', 'comercial@defender.eng.br'],
-      subject: `Nova Solicitação de Orçamento — ${nome_completo} (${data} às ${horario})`,
+      // MUDANÇA: Assunto simplificado sem o horário.
+      subject: `Nova Solicitação de Orçamento — ${nome_completo}`,
       html: `
         <p>Prezada equipe Defender,</p>
-        <p>Foi enviada uma nova solicitação de orçamento detalhado através do site oficial em <strong>${data}</strong>, às <strong>${horario}</strong>.</p>
+        <p>Foi enviada uma nova solicitação de orçamento detalhado através do site oficial em <strong>${data}</strong>.</p>
         
         <p>Seguem as informações preenchidas pelo cliente:</p>
         
@@ -59,7 +62,7 @@ app.post('/api/enviar-orcamento', async (req, res) => {
         <p>${mensagem_adicional || 'Nenhuma mensagem adicional'}</p>
         
         <hr>
-        <p><small>📅 Registro gerado automaticamente em: ${data} às ${horario}<br>
+        <p><small>📅 Registro gerado automaticamente em: ${data}<br>
         Origem: Formulário de Orçamento — defender.eng.br</small></p>
         
         <p>Atenciosamente,<br>
@@ -73,9 +76,11 @@ app.post('/api/enviar-orcamento', async (req, res) => {
 
     // Email para o cliente
     await resend.emails.send({
-      from: 'orcamento@defender.eng.br',
+      // MUDANÇA: Nome do remetente alterado.
+      from: 'Orçamentos Defender Engenharia <orcamento@defender.eng.br>',
       to: email,
-      subject: 'Recebemos sua solicitação de orçamento - Defender',
+      // MUDANÇA: Assunto do e-mail alterado conforme solicitado.
+      subject: 'Defender Engenharia',
       html: `
         <p>Olá, <strong>${nome_completo}</strong>!</p>
         
@@ -87,7 +92,7 @@ app.post('/api/enviar-orcamento', async (req, res) => {
         <ul>
           <li>📍 Endereço: ${endereco_imovel}</li>
           <li>🔧 Serviços: ${servicos_interesse}</li>
-          <li>📅 Data de envio: ${data} às ${horario}</li>
+          <li>📅 Data de envio: ${data}</li>
         </ul>
         
         <p>Se tiver alguma dúvida ou precisar adicionar informações, entre em contato conosco:</p>
