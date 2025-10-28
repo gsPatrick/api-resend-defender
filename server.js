@@ -3,7 +3,7 @@ const { Resend } = require('resend');
 const cors = require('cors');
 
 const app = express();
-const resend = new Resend('SUA_CHAVE_RESEND_AQUI');
+const resend = new Resend('re_BgoohFMA_JTP8Wf8gLFyrfgUuWwLCPe4n');
 
 app.use(cors());
 app.use(express.json());
