@@ -1,4 +1,4 @@
-const express = require('express');
+reseconst express = require('express');
 const { Resend } = require('resend');
 const cors = require('cors');
 
@@ -31,7 +31,7 @@ app.post('/api/enviar-orcamento', async (req, res) => {
     await resend.emails.send({
       // MUDANÇA: Nome do remetente alterado.
       from: 'Orçamentos Defender Engenharia <orcamento@defender.eng.br>',
-      to: ['marketingdefenderengenharia@gmail.com', 'comercial@defender.eng.br'],
+      to: ['marketingdefenderengenharia@gmail.com', 'contato@defender.eng.br'],
       // MUDANÇA: Assunto simplificado sem o horário.
       subject: `Nova Solicitação de Orçamento — ${nome_completo}`,
       html: `
