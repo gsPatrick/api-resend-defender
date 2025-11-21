@@ -1,4 +1,4 @@
-reseconst express = require('express');
+const express = require('express');
 const { Resend } = require('resend');
 const cors = require('cors');
 
