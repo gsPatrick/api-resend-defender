@@ -4,7 +4,7 @@ const cors = require('cors');
 
 const app = express();
 // MUDANÇA: A chave da API foi removida por segurança. Cole a sua chave aqui.
-const resend = new Resend('SUA_CHAVE_API_RESEND'); 
+const resend = new Resend('re_BgoohFMA_JTP8Wf8gLFyrfgUuWwLCPe4n'); 
 
 app.use(cors());
 app.use(express.json());
